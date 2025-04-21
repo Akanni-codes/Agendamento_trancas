@@ -32,4 +32,4 @@ public class Agendamento {
 
     @OneToOne(mappedBy = "agendamento", cascade = CascadeType.ALL)
     private Pagamento pagamento;
-}
+};

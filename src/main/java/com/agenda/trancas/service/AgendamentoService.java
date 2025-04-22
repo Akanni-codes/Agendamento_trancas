@@ -4,6 +4,7 @@ import com.agenda.trancas.DTO.AgendamentoDTO;
 import com.agenda.trancas.model.Agendamento;
 import com.agenda.trancas.repository.*;
 import jakarta.transaction.Transactional;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -40,4 +41,8 @@ public class AgendamentoService {
 
         return agendamentoRepo.save(ag);
     }
+    public List listarTodos() {
+        return agendamentoRepo.findAll();
+    }
+
 }

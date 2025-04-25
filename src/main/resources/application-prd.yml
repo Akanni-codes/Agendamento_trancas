@@ -23,10 +23,3 @@ spring:
 
   flyway:
     enabled: false
-logging:
-  level:
-    org:
-      springframework: DEBUG
-    com:
-      zaxxer:
-        hikari: DEBUG

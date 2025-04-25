@@ -7,10 +7,10 @@ spring:
 
 
   hikari:
-    connection-timeout: 30000  # Timeout para a conexão
-    max-lifetime: 60000  # Tempo máximo para uma conexão ser mantida no pool
-    maximum-pool-size: 10  # Número máximo de conexões no pool
-    idle-timeout: 30000  # Timeout para conexões ociosas
+    connection-timeout: 30000
+    max-lifetime: 60000  # Tempo mï¿½ximo para uma conexï¿½o ser mantida no pool
+    maximum-pool-size: 10  # Nï¿½mero mï¿½ximo de conexï¿½es no pool
+    idle-timeout: 30000  # Timeout para conexï¿½es ociosas
 
 
   jpa:

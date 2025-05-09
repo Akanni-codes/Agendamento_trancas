@@ -6,24 +6,47 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       pool-name: ${spring.application.name}-HikariPool
-      maximum-pool-size: 5
-      minimum-idle: 1
-      connection-timeout: 5000
-      initialization-fail-timeout: 0 # Falha imediatamente
-      max-lifetime: 300000
+      maximum-pool-size: ${DB_POOL_SIZE:5}
+      minimum-idle: ${DB_POOL_MIN_IDLE:1}
+      connection-timeout: ${DB_CONN_TIMEOUT:5000}
+      initialization-fail-timeout: 0
+      max-lifetime: ${DB_CONN_MAX_LIFETIME:300000}
       validation-timeout: 2000
+      leak-detection-threshold: ${DB_LEAK_DETECTION_THRESHOLD:60000}
 
   jpa:
     hibernate:
-      ddl-auto: none # Desativado temporariamente
-    show-sql: true
+      ddl-auto: ${DB_HIBERNATE_DDL:update}
+    show-sql: ${DB_SHOW_SQL:true}
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQLDialect # Versão não-depreciada
+        dialect: org.hibernate.dialect.MySQL8Dialect
         connection.provider_disables_autocommit: true
-        boot:
-          allow_jdbc_metadata_access: false # Substitui o setting depreciado
+        jdbc:
+          time_zone: UTC
+        format_sql: true
+        generate_statistics: false
+      javax:
+        persistence:
+          validation:
+            mode: none
 
   sql:
     init:
-      mode: never # Desativa inicialização automática
+      mode: never
+
+# Configurações adicionais recomendadas
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+      springframework:
+        jdbc:
+          core: DEBUG
+        orm:
+          jpa: DEBUG

@@ -43,7 +43,6 @@ public class Usuario implements UserDetails {
         return senha;
     }
 
-    @Override
     public String getEmail() {
         return email;
     }

@@ -20,6 +20,9 @@ public class Usuario implements UserDetails {
     private Long id;
 
     @Column(unique = true)
+
+    private String nome;
+
     private String email;
 
     private String senha;
@@ -31,12 +34,17 @@ public class Usuario implements UserDetails {
     }
 
     @Override
+    public String getUsername(){
+        return nome;
+    }
+
+    @Override
     public String getPassword() {
         return senha;
     }
 
     @Override
-    public String getUsername() {
+    public String getEmail() {
         return email;
     }
 
